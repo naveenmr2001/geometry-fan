@@ -3,52 +3,59 @@ package com.geometry;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import static com.geometry.Rectangle.createSquare;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RectangleTest {
-    Rectangle rectangleObject = new Rectangle();
+    Rectangle rectangleObject = new Rectangle(3,4);
 
     @Nested
     class RectangleSizeTest {
         @Test
-        void toCheckTheRectangleAreaForInputThreeAndFour() throws ExceptionToHandleTheNegativeNumber {
+        void toCheckTheRectangleAreaForInputThreeAndFour() throws IllegalArgumentException {
 
             int exceptedValue = 12;
 
-            int actualValue = rectangleObject.areaOfRectangle(3,4);
+            int actualValue = rectangleObject.areaOfRectangle();
 
             assertEquals(exceptedValue,actualValue);
 
         }
 
         @Test
-        void toCheckTheExceptionForInputNegativeThreeAndFour(){
+        void toCheckThePerimeterOfRectangleForInputFiveAndSix() throws IllegalArgumentException{
 
-            assertThrows(ExceptionToHandleTheNegativeNumber.class,()->rectangleObject.areaOfRectangle(-3,4));
+            int exceptedValue = 14;
+
+            int actualValue = rectangleObject.perimeterOfRectangle();
+
+            assertEquals(exceptedValue,actualValue);
 
         }
 
+        Rectangle squareObject = createSquare(6,6);
 
         @Test
-        void toCheckThePerimeterOfRectangleForInputFiveAndSix() throws ExceptionToHandleTheNegativeNumber{
+        void toCheckTheAreaOfSquareForInputSix() throws IllegalArgumentException{
 
-            int exceptedValue = 22;
+            int exceptedValue = 36;
 
-            int actualValue = rectangleObject.perimeterOfRectangle(5,6);
+            int actualValue = squareObject.areaOfRectangle();
 
             assertEquals(exceptedValue,actualValue);
 
         }
 
         @Test
-        void toCheckTheExceptionForInputNegativeFiveAndFour() throws ExceptionToHandleTheNegativeNumber{
+        void toCheckThePerimeterOfSquareForInputSix() throws IllegalArgumentException{
 
-            assertThrows(ExceptionToHandleTheNegativeNumber.class,()->rectangleObject.perimeterOfRectangle(-5,4));
+            int exceptedValue = 24;
+
+            int actualValue = squareObject.perimeterOfRectangle();
+
+            assertEquals(exceptedValue,actualValue);
 
         }
     }
-
-
 
 }

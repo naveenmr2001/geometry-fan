@@ -1,26 +1,42 @@
 package com.geometry;
 
-
-// A Class that represents use-defined exception
-
-class ExceptionToHandleTheNegativeNumber extends Exception {
-    public ExceptionToHandleTheNegativeNumber(String s)
-    {
-        super(s);
-    }
-}
 public class Rectangle {
-    public int areaOfRectangle(int lengthOfSide, int breathOfSide) throws ExceptionToHandleTheNegativeNumber {
+
+    private final int lengthOfSide;
+
+    private final int breathOfSide;
+
+    public Rectangle(int lengthOfSide,int breathOfSide){
+
+        this.lengthOfSide = lengthOfSide;
+        this.breathOfSide = breathOfSide;
+
+    }
+
+    public int areaOfRectangle() throws IllegalArgumentException {
+
         if(lengthOfSide<0 || breathOfSide<0){
-            throw new ExceptionToHandleTheNegativeNumber("It should be greater than zero");
+            throw new IllegalArgumentException("It should be greater than zero");
         }
+
         return lengthOfSide*breathOfSide;
     }
 
-    public int perimeterOfRectangle(int lengthOfSide,int breathOfSide) throws ExceptionToHandleTheNegativeNumber {
+    public int perimeterOfRectangle() throws IllegalArgumentException {
+
         if(lengthOfSide<0 || breathOfSide<0){
-            throw new ExceptionToHandleTheNegativeNumber("It should be greater than Zero");
+            throw new IllegalArgumentException("It should be greater than Zero");
         }
+
         return 2*(lengthOfSide+breathOfSide);
+    }
+
+    public static Rectangle createSquare(int lengthOfSide,int breathOfSide) throws IllegalArgumentException{
+
+        if(lengthOfSide<0 || breathOfSide<0){
+            throw new IllegalArgumentException("It should be greater than zero");
+        }
+
+        return new Rectangle(lengthOfSide,breathOfSide);
     }
 }
